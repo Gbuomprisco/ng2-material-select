@@ -1,0 +1,43 @@
+<main>
+	<h1>Ng2Select demo</h1>
+
+	<div class="section">
+		<h2>Select with predefined value</h2>
+
+		<ng2-select [placeholder]="'Choose your framework'" [(ngModel)]="framework">
+			<ng2-select-option [value]="'React JS'">
+				React JS
+			</ng2-select-option>
+
+			<ng2-select-option [value]="'Angular 2'">
+				Angular 2
+			</ng2-select-option>
+		</ng2-select>
+
+		<p>
+			You chose {{ framework }}
+		</p>
+	</div>
+
+	<div class="section">
+		<h2>Select without predefined value</h2>
+		<ng2-select [placeholder]="'Choose your language'" [(ngModel)]="language">
+			<ng2-select-option [value]="'Typescript'">
+				Typescript
+			</ng2-select-option>
+
+			<ng2-select-option [value]="'Javascript'">
+				Javascript
+			</ng2-select-option>
+
+			<ng2-select-option [value]="'Kotlin'">
+				Kotlin
+			</ng2-select-option>
+		</ng2-select>
+
+		<p>
+			You chose {{ language }}
+		</p>
+	</div>
+
+</main>
