@@ -10,15 +10,16 @@ A component inspired by material design for creating visually nice select compon
 
 ## Simple Usage
 
+#### Example
+
     // template.html
     <ng2-select [placeholder]="'Choose your framework'" 
                 [options]="options"
                 [(ngModel)]="framework">
-        
+    
     </ng2-select>
     
     // app.ts
-    
     import { Component } from '@angular/core';
     import { Ng2Select } from 'ng2-material-select';
     
@@ -38,11 +39,15 @@ A component inspired by material design for creating visually nice select compon
     
     
 ## Advanced Usage using objects
+
 In case you want to use objects instead of simple arrays, you might want to use 2 further options:
-- `displayBy` - defines the key for displaying the value of the item
-- `?identifyBy` - optional, it is useful in case there is the possibility to have items
-with duplicate values (ex. two items with the same name). In that case, you can defined another key
-(ex. id) to correctly identify the item. Also, this allows the component to use `trackBy`.
+- **`displayBy`** - defines the key for displaying the value of the item
+
+- **`?identifyBy`** - optional, it is useful in case there is the possibility to have items with duplicate values (ex. two items with the same name). In that case, you can defined another key (ex. id) to correctly identify the item. Also, this allows the component to use `trackBy`
+
+
+#### Example
+
 
     // template.html
     <ng2-select [placeholder]="'Choose your framework'" 
@@ -53,7 +58,6 @@ with duplicate values (ex. two items with the same name). In that case, you can 
     </ng2-select>
     
     // app.ts
-    
     import { Component } from '@angular/core';
     import { Ng2Select } from 'ng2-material-select';
     
