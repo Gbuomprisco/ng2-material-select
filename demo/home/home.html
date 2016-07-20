@@ -42,4 +42,23 @@
 		</p>
 	</div>
 
+    <div class="section">
+        <h2>Select with multiple values</h2>
+
+        <ng2-select [placeholder]="'Choose your language'"
+                    [multiple]="true"
+                    [displayBy]="'value'"
+                    [identifyBy]="'id'"
+                    [options]="languages"
+                    [(ngModel)]="myModel">
+        </ng2-select>
+
+        <p *ngIf="myModel.length">
+            You chose
+            <span *ngFor="let option of myModel">
+                {{ option.value }}
+            </span>
+        </p>
+    </div>
+
 </main>

@@ -13,7 +13,12 @@ import {
 import { PLATFORM_DIRECTIVES } from '@angular/core';
 import {By} from '@angular/platform-browser';
 import { Ng2Select } from './ng2-select';
-import { BasicSelectWithArray, SelectWithObject, templateWithIdentifyBy } from './testing-helpers';
+import {
+    BasicSelectWithArray,
+    SelectWithObject,
+    templateWithIdentifyBy,
+    templateWithMultipleSelection
+} from './testing-helpers';
 
 import {
     disableDeprecatedForms,
@@ -124,6 +129,68 @@ describe('Ng2Select', () => {
 
             const index = component.identify({id: 0, value: 'Typescript'});
             expect(index).toBe(0);
+        }));
+    });
+
+    describe('testing multiple selection', () => {
+        let component: Ng2Select,
+            fixture: ComponentFixture<SelectWithObject>;
+
+        beforeEach(() => {
+            fixture = builder.
+                overrideTemplate(SelectWithObject, templateWithMultipleSelection).
+                createSync(SelectWithObject);
+        });
+
+        it('has multiple property and valid model value', fakeAsync(() => {
+            component = getComponent(fixture);
+            expect(component.multiple).toBe(true);
+            expect(component.value).toEqual([]);
+        }));
+
+        it('can select multiple items', fakeAsync(() => {
+            component = getComponent(fixture);
+
+            const items = component.dropdown.menu.items.toArray();
+            const item = items[0];
+            const secondItem = items[1];
+
+            // select first
+            component.dropdown.state.onItemClicked.emit(item);
+            expect(component.value).toEqual([item.value]);
+            expect(component.value).toEqual(component.selected);
+            expect(component.placeholderDisplay).toEqual(item.value.value);
+
+            // select second
+            component.dropdown.state.onItemClicked.emit(secondItem);
+            expect(component.value).toEqual(component.selected);
+            expect(component.value).toEqual([item.value, secondItem.value]);
+            expect(component.placeholderDisplay).toEqual('2 items selected');
+        }));
+
+        it('can select and deselect items', fakeAsync(() => {
+            component = getComponent(fixture);
+
+            const items = component.dropdown.menu.items.toArray();
+            const item = items[0];
+            const secondItem = items[1];
+
+            // select first
+            component.dropdown.state.onItemClicked.emit(item);
+
+            // deselect first
+            component.dropdown.state.onItemClicked.emit(item);
+            expect(component.value).toEqual([]);
+
+            // select both
+            component.dropdown.state.onItemClicked.emit(secondItem);
+            component.dropdown.state.onItemClicked.emit(item);
+            expect(component.value).toEqual([secondItem.value, item.value]);
+
+            // deselect both
+            component.dropdown.state.onItemClicked.emit(secondItem);
+            component.dropdown.state.onItemClicked.emit(item);
+            expect(component.value).toEqual([]);
         }));
     });
 });

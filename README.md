@@ -8,7 +8,10 @@ A component inspired by material design for creating visually nice select compon
 
     npm install ng2-material-select --save
 
-## Simple Usage
+## API
+- `placeholder` - defines the placeholder when no items are selected
+- `multiple` - defines whether it's possible to select multiple items
+
 
 #### Example
 
@@ -81,8 +84,7 @@ In case you want to use objects instead of simple arrays, you might want to use 
         ];
     }
     
-    
+
 ## TODO
-- Multiple items selection
 - Autocomplete dropdown
 - Nicer design

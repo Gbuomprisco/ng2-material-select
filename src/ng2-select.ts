@@ -8,6 +8,7 @@ import {
     ViewChild
 } from '@angular/core';
 
+import { Selectable } from './decorators/selectable';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Ng2SelectComponent } from './ng2-select.d';
 import { Ng2Dropdown, Ng2DropdownButton, Ng2DropdownMenu, Ng2MenuItem } from 'ng2-material-dropdown';
@@ -21,6 +22,7 @@ const CUSTOM_SELECT_VALUE_ACCESSOR = provide(NG_VALUE_ACCESSOR, {
 /**
  * A component for entering a list of terms to be used with ngModel.
  */
+
 @Component({
     moduleId: module.id,
     selector: 'ng2-select',
@@ -29,19 +31,25 @@ const CUSTOM_SELECT_VALUE_ACCESSOR = provide(NG_VALUE_ACCESSOR, {
     styles: [ require('./style.scss').toString() ],
     template: require('./template.html')
 })
+@Selectable()
 export class Ng2Select extends SelectAccessor implements Ng2SelectComponent {
     @Input() public placeholder: string;
     @Input() public options: any[] = [];
     @Input() public displayBy: string;
     @Input() public identifyBy: string;
+    @Input() public multiple: boolean = false;
 
     @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
 
     @ViewChild(Ng2Dropdown) public dropdown;
 
     public getSelectedValue(): any {
-        const index = this.options.indexOf(this.value);
-        return index >= 0 ? this.displayValue(this.options[index]) : undefined;
+        if (this.multiple && this.selected.length === 1) {
+            return this.displayValue(this.selected[0]);
+        } else {
+            const index = this.options.indexOf(this.value);
+            return index >= 0 ? this.displayValue(this.options[index]) : undefined;
+        }
     }
 
     public displayValue(item): string {
@@ -49,14 +57,22 @@ export class Ng2Select extends SelectAccessor implements Ng2SelectComponent {
     }
 
     public get placeholderDisplay(): string {
-        return this.getSelectedValue() || this.placeholder;
+        if (this.multiple && this.selected.length > 1) {
+            return `${this.selected.length} items selected`;
+        } else {
+            return this.getSelectedValue() || this.placeholder;
+        }
     }
 
     ngAfterContentInit() {
         const state = this.dropdown.state;
 
         state.onItemClicked.subscribe(item => {
-            this.value = this.options.indexOf(item.value);
+            if (this.multiple) {
+                this.toggle(item.value);
+            }
+
+            this.value = this.multiple ? this.selected : this.options.indexOf(item.value);
             this.onChange.emit(this.value);
         });
     }
