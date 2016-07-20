@@ -28,7 +28,7 @@ A component inspired by material design for creating visually nice select compon
     
     @Component({
         selector: 'app',
-        directives: [Ng2Select, Ng2SelectOption],
+        directives: [ Ng2Select ],
         template: require('./home.html')
     })
     
@@ -66,7 +66,7 @@ In case you want to use objects instead of simple arrays, you might want to use 
     
     @Component({
         selector: 'app',
-        directives: [Ng2Select, Ng2SelectOption],
+        directives: [ Ng2Select ],
         template: require('./home.html')
     })
     
