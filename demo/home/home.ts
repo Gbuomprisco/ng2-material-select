@@ -1,22 +1,32 @@
 import { Component } from '@angular/core';
 import { Ng2Select } from '../../src/ng2-select';
-import { Ng2SelectOption } from '../../src/ng2-select-option';
 
 @Component({
     selector: 'app',
-    directives: [Ng2Select, Ng2SelectOption],
+    directives: [Ng2Select],
     template: require('./home.html')
 })
 
 export class App {
-    framework = 'Angular 2';
+    framework1 = {
+        value: 'Angular 2',
+        id: 0
+    };
     language = undefined;
+    framework = undefined;
 
-    constructor() {
-
-    }
-
-    ngOnInit() {
-
-    }
+    frameworks = [
+        {
+            value: 'Angular 2',
+            id: 0
+        },
+        {
+            value: 'React',
+            id: 1
+        }
+    ];
+    languages = [
+        {value: 'Typescript'},
+        {value: 'Javascript'}
+    ];
 }

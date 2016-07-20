@@ -4,8 +4,9 @@
   "description": "Angular 2 material-like Select Component",
   "scripts": {
     "typings-install": "typings install",
+    "typings-bundle": "typings bundle --out ./dist/typings.bundle.d.ts",
     "postinstall": "npm run typings-install",
-    "prepublish": "npm run build && ./node_modules/.bin/tsc -p tsconfig.json",
+    "prepublish": "npm run typings-bundle && npm run build && ./node_modules/.bin/tsc -p tsconfig.json",
     "build": "webpack --inline --colors --progress --display-error-details --display-cached",
     "watch": "npm run build -- --watch",
     "server": "webpack-dev-server --config webpack.demo.js --inline --colors --progress --display-error-details --display-cached --port 3003  --content-base demo",
@@ -19,14 +20,14 @@
   "contributors": [],
   "license": "MIT",
   "devDependencies": {
-    "@angular/common": "2.0.0-rc.3",
-    "@angular/compiler": "2.0.0-rc.3",
-    "@angular/core": "2.0.0-rc.3",
-    "@angular/forms": "^0.1.1",
-    "@angular/http": "2.0.0-rc.3",
-    "@angular/platform-browser": "2.0.0-rc.3",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.3",
-    "@angular/platform-server": "2.0.0-rc.3",
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "^0.2.0",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/platform-server": "2.0.0-rc.4",
     "@angular/router": "2.0.0-rc.2",
     "autoprefixer": "^6.3.6",
     "awesome-typescript-loader": "~0.16.2",
@@ -64,7 +65,10 @@
     "webpack-merge": "^0.8.4",
     "zone.js": "~0.6.12"
   },
-  "dependencies": {},
+  "dependencies": {
+    "equals": "^1.0.5",
+    "ng2-material-dropdown": "0.1.1"
+  },
   "keywords": [
     "angular 2",
     "angular 2 select",
@@ -84,5 +88,6 @@
     "dist",
     "index.js",
     "index.ts"
-  ]
+  ],
+  "typings": "src/ng2-select.d.ts"
 }

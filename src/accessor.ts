@@ -2,35 +2,56 @@ import {
     ControlValueAccessor
 } from '@angular/forms';
 
+const equal = require('equals');
+
 export class SelectAccessor implements ControlValueAccessor {
+    public options: any[];
+    public identifyBy: string;
+
     private _value: any = undefined;
-
     private _onTouchedCallback: (value: any) => void;
-
     private _onChangeCallback: (value: any) => void;
 
     public get value(): any {
-        return this._value;
+        return this.options[this._value];
     };
 
     public set value(value: any) {
         this._value = value;
-        this._onChangeCallback(value);
+        this._onChangeCallback(this.value);
     }
 
-    onTouched(value) {
+    public onTouched(value) {
         this._onTouchedCallback(value);
     }
 
-    writeValue(value: any) {
-        this._value = value;
+    public writeValue(value: any) {
+        this._value = this.findIndexValue(value);
     }
 
-    registerOnChange(fn: any) {
+    public findIndexValue(value): number {
+        const identifyBy = this.identifyBy;
+
+        if (identifyBy) {
+            if (!value || !value.hasOwnProperty(identifyBy)) {
+                return;
+            }
+            value = this.options.filter(item => item[identifyBy] === value[identifyBy])[0];
+        }
+
+        return this.options.findIndex(item => equal(item, value));
+    }
+
+    public identify(value) {
+        const identifyBy = this.identifyBy;
+        return identifyBy && value ? value[identifyBy] : undefined;
+    }
+
+    public registerOnChange(fn: any) {
         this._onChangeCallback = fn;
     }
 
-    registerOnTouched(fn: any) {
+    public registerOnTouched(fn: any) {
         this._onTouchedCallback = fn;
     }
 }
