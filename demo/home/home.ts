@@ -29,4 +29,6 @@ export class App {
         {value: 'Typescript'},
         {value: 'Javascript'}
     ];
+
+    myModel = [];
 }

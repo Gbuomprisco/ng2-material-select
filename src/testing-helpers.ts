@@ -20,7 +20,6 @@ export class BasicSelectWithArray {
     options = ['Typescript', 'Javascript'];
 }
 
-
 @Component({
     selector: 'app',
     template: `
@@ -53,10 +52,20 @@ export class SelectWithObject {
 }
 
 export const templateWithIdentifyBy = `
-        <ng2-select [(ngModel)]="language" 
-                    [options]="options" 
-                    [displayBy]="'value'"
-                    [identifyBy]="'id'"
-                    [placeholder]="'Please choose Language'">
-        </ng2-select>
-    `,
+    <ng2-select [(ngModel)]="language" 
+                [options]="options" 
+                [displayBy]="'value'"
+                [identifyBy]="'id'"
+                [placeholder]="'Please choose Language'">
+    </ng2-select>
+`;
+
+export const templateWithMultipleSelection = `
+    <ng2-select [(ngModel)]="language" 
+                [options]="options" 
+                [displayBy]="'value'"
+                [identifyBy]="'id'"
+                [multiple]="true"
+                [placeholder]="'Please choose Language'">
+    </ng2-select>
+`;

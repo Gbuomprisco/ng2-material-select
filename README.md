@@ -8,7 +8,10 @@ A component inspired by material design for creating visually nice select compon
 
     npm install ng2-material-select --save
 
-## Simple Usage
+## API
+- `placeholder` - defines the placeholder when no items are selected
+- `multiple` - defines whether it's possible to select multiple items
+
 
     // template.html
     <ng2-select [placeholder]="'Choose your framework'" 
@@ -38,6 +41,7 @@ A component inspired by material design for creating visually nice select compon
     
     
 ## Advanced Usage using objects
+
 In case you want to use objects instead of simple arrays, you might want to use 2 further options:
 - `displayBy` - defines the key for displaying the value of the item
 - `?identifyBy` - optional, it is useful in case there is the possibility to have items
@@ -77,8 +81,7 @@ with duplicate values (ex. two items with the same name). In that case, you can 
         ];
     }
     
-    
+
 ## TODO
-- Multiple items selection
 - Autocomplete dropdown
 - Nicer design

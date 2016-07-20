@@ -7,13 +7,16 @@ const equal = require('equals');
 export class SelectAccessor implements ControlValueAccessor {
     public options: any[];
     public identifyBy: string;
+    public multiple: boolean;
+    public selected: any[] = [];
+    public toggle;
 
     private _value: any = undefined;
     private _onTouchedCallback: (value: any) => void;
     private _onChangeCallback: (value: any) => void;
 
     public get value(): any {
-        return this.options[this._value];
+        return this.multiple ? this.selected : this.options[this._value];
     };
 
     public set value(value: any) {
@@ -26,7 +29,7 @@ export class SelectAccessor implements ControlValueAccessor {
     }
 
     public writeValue(value: any) {
-        this._value = this.findIndexValue(value);
+        this._value = this.multiple ? this.selected : this.findIndexValue(value);
     }
 
     public findIndexValue(value): number {
