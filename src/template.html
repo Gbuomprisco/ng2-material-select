@@ -2,7 +2,7 @@
     <ng2-dropdown-button>
         {{ placeholderDisplay }}
     </ng2-dropdown-button>
-    <ng2-dropdown-menu>
+    <ng2-dropdown-menu [focusFirstElement]="false">
         <ng2-menu-item *ngFor="let option of options;trackBy: identify(option)"
                        [class.selected]="isSelected(option)"
                        [preventClose]="multiple"

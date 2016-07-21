@@ -5,7 +5,8 @@ import {
     forwardRef,
     provide,
     EventEmitter,
-    ViewChild
+    ViewChild,
+    Renderer
 } from '@angular/core';
 
 import { Selectable } from './decorators/selectable';
@@ -43,6 +44,10 @@ export class Ng2Select extends SelectAccessor implements Ng2SelectComponent {
 
     @ViewChild(Ng2Dropdown) public dropdown;
 
+    constructor(private renderer: Renderer) {
+        super();
+    }
+
     public getSelectedValue(): any {
         if (this.multiple && this.selected.length === 1) {
             return this.displayValue(this.selected[0]);
@@ -64,7 +69,7 @@ export class Ng2Select extends SelectAccessor implements Ng2SelectComponent {
         }
     }
 
-    ngAfterContentInit() {
+    ngOnInit() {
         const state = this.dropdown.state;
 
         state.onItemClicked.subscribe(item => {
@@ -74,6 +79,18 @@ export class Ng2Select extends SelectAccessor implements Ng2SelectComponent {
 
             this.value = this.multiple ? this.selected : this.options.indexOf(item.value);
             this.onChange.emit(this.value);
+        });
+
+        this.dropdown.onShow.subscribe(() => {
+            if (!this.value) {
+                return;
+            }
+
+            // focus selected element
+            const index = this.findIndexValue(this.value);
+            const item = this.dropdown.menu.items.toArray()[index];
+
+            this.dropdown.state.select(item, false);
         });
     }
 }
