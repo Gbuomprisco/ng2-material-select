@@ -4,6 +4,9 @@ A component inspired by material design for creating visually nice select compon
 
 **This is still WIP**
 
+## Demo
+Checkout a live demo at [http://www.webpackbin.com/4kAEf9Sub](http://www.webpackbin.com/4kAEf9Sub)
+
 ## Install
 
     npm install ng2-material-select --save
