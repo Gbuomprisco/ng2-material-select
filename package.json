@@ -1,12 +1,11 @@
 {
   "name": "ng2-material-select",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Angular 2 material-like Select Component",
   "scripts": {
     "typings-install": "typings install",
-    "typings-bundle": "typings bundle --out ./dist/typings.bundle.d.ts",
     "postinstall": "npm run typings-install",
-    "prepublish": "npm run typings-bundle && npm run build && ./node_modules/.bin/tsc -p tsconfig.json",
+    "prepublish": "npm run build && ./node_modules/.bin/tsc -p tsconfig.json",
     "build": "webpack --inline --colors --progress --display-error-details --display-cached",
     "watch": "npm run build -- --watch",
     "server": "webpack-dev-server --config webpack.demo.js --inline --colors --progress --display-error-details --display-cached --port 3003  --content-base demo",
@@ -20,18 +19,16 @@
   "contributors": [],
   "license": "MIT",
   "devDependencies": {
-    "@angular/common": "2.0.0-rc.4",
-    "@angular/compiler": "2.0.0-rc.4",
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/forms": "^0.2.0",
-    "@angular/http": "2.0.0-rc.4",
-    "@angular/platform-browser": "2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-    "@angular/platform-server": "2.0.0-rc.4",
-    "@angular/router": "2.0.0-rc.2",
+    "@angular/common": "2.0.0-rc.6",
+    "@angular/compiler": "2.0.0-rc.6",
+    "@angular/core": "2.0.0-rc.6",
+    "@angular/forms": "2.0.0-rc.6",
+    "@angular/http": "2.0.0-rc.6",
+    "@angular/platform-browser": "2.0.0-rc.6",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.6",
     "autoprefixer": "^6.3.6",
     "awesome-typescript-loader": "~0.16.2",
-    "core-js": "^2.2.0",
+    "core-js": "^2.4.1",
     "css-loader": "^0.23.1",
     "es6-promise": "3.0.2",
     "es6-shim": "0.35.0",
@@ -49,7 +46,7 @@
     "precss": "^1.4.0",
     "protractor": "^3.3.0",
     "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.6",
+    "rxjs": "5.0.0-beta.11",
     "sass-loader": "^3.2.1",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
@@ -63,11 +60,11 @@
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.0",
     "webpack-merge": "^0.8.4",
-    "zone.js": "~0.6.12"
+    "zone.js": "~0.6.17"
   },
   "dependencies": {
     "equals": "^1.0.5",
-    "ng2-material-dropdown": "0.1.2"
+    "ng2-material-dropdown": "0.2.9"
   },
   "keywords": [
     "angular 2",
@@ -83,11 +80,10 @@
     "url": "https://github.com/Gbuomprisco/ng2-material-select/issues"
   },
   "homepage": "https://github.com/Gbuomprisco/ng2-material-select",
-  "main": "./index.js",
+  "main": "./dist/index.js",
   "files": [
     "dist",
     "index.js",
     "index.ts"
-  ],
-  "typings": "src/ng2-select.d.ts"
+  ]
 }

@@ -3,11 +3,10 @@ import { Ng2Select } from '../../src/ng2-select';
 
 @Component({
     selector: 'app',
-    directives: [Ng2Select],
     template: require('./home.html')
 })
 
-export class App {
+export class Home {
     framework1 = {
         value: 'Angular 2',
         id: 0

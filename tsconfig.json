@@ -6,16 +6,18 @@
     "target": "es6",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "declaration": false,
+    "declaration": true,
     "sourceMap": true,
-    "moduleResolution": "node"
-   // "rootDir": "."
+    "moduleResolution": "node",
+    "rootDir": ".",
+    "outDir": "dist"
   },
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true
   },
   "files": [
     "typings/index.d.ts",
+    "src/ng2-select.module.ts",
     "index.ts"
   ],
   "exclude": [

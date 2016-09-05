@@ -1,48 +1,35 @@
 import {
-    inject,
-    tick,
     fakeAsync,
-    addProviders
+    ComponentFixture,
+    async,
+    tick,
+    TestBed
 } from '@angular/core/testing';
 
-import {
-    ComponentFixture,
-    TestComponentBuilder
-} from '@angular/compiler/testing';
+import { By } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { PLATFORM_DIRECTIVES } from '@angular/core';
-import {By} from '@angular/platform-browser';
-import { Ng2Select } from './ng2-select';
 import {
     BasicSelectWithArray,
     SelectWithObject,
-    templateWithIdentifyBy,
-    templateWithMultipleSelection
+    SelectWithIdentifyBy,
+    SelectWithMultipleSelection,
+    TestModule
 } from './testing-helpers';
 
-import {
-    disableDeprecatedForms,
-    provideForms,
-    REACTIVE_FORM_DIRECTIVES
-} from '@angular/forms';
-
+import { Ng2Select } from './ng2-select';
 
 describe('Ng2Select', () => {
-    let builder: TestComponentBuilder;
-
     beforeEach(() => {
-        addProviders([
-            disableDeprecatedForms(),
-            provideForms(),
-            {
-                provide: PLATFORM_DIRECTIVES,
-                useValue: [REACTIVE_FORM_DIRECTIVES],
-                multi: true
-            }]
-        );
-    });
+       TestBed.configureTestingModule({
+           declarations: [],
+           imports: [BrowserModule, TestModule]
+       });
+   });
 
-    beforeEach(inject([TestComponentBuilder], (tcb: TestComponentBuilder) => builder = tcb));
+   beforeEach(async(() => {
+       TestBed.compileComponents();
+   }));
 
     function getComponent(fixture) {
         tick();
@@ -56,7 +43,7 @@ describe('Ng2Select', () => {
             fixture: ComponentFixture<BasicSelectWithArray>;
 
         beforeEach(() => {
-            fixture = builder.createSync(BasicSelectWithArray);
+            fixture = TestBed.createComponent(BasicSelectWithArray);
         });
 
         it('has its placeholder defined', fakeAsync(() => {
@@ -85,10 +72,10 @@ describe('Ng2Select', () => {
 
     describe('testing selected with objects', () => {
         let component: Ng2Select,
-            fixture: ComponentFixture<SelectWithObject>;
+            fixture: ComponentFixture<any>;
 
         beforeEach(() => {
-            fixture = builder.createSync(SelectWithObject);
+            fixture = TestBed.createComponent(SelectWithObject);
         });
 
         it('populated items with 3 options', fakeAsync(() => {
@@ -118,7 +105,7 @@ describe('Ng2Select', () => {
         }));
 
         it('can identify values by identifyBy property', fakeAsync(() => {
-            fixture = builder.overrideTemplate(SelectWithObject, templateWithIdentifyBy).createSync(SelectWithObject);
+            fixture = TestBed.createComponent(SelectWithIdentifyBy);
             component = getComponent(fixture);
 
             expect(component.identifyBy).toEqual('id');
@@ -134,12 +121,10 @@ describe('Ng2Select', () => {
 
     describe('testing multiple selection', () => {
         let component: Ng2Select,
-            fixture: ComponentFixture<SelectWithObject>;
+            fixture: ComponentFixture<SelectWithMultipleSelection>;
 
         beforeEach(() => {
-            fixture = builder.
-                overrideTemplate(SelectWithObject, templateWithMultipleSelection).
-                createSync(SelectWithObject);
+            fixture = TestBed.createComponent(SelectWithMultipleSelection);
         });
 
         it('has multiple property and valid model value', fakeAsync(() => {
