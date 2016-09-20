@@ -1,2 +1,3 @@
-const Ng2Select = require('./ng2-select.bundle.js').Ng2Select;
-export {Ng2Select};
+const components = require('./ng2-select.bundle.js');
+export const Ng2Select = components.Ng2Select;
+export const Ng2SelectModule = components.Ng2SelectModule;
