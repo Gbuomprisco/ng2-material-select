@@ -1,6 +1,6 @@
 {
   "name": "ng2-material-select",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Angular 2 material-like Select Component",
   "scripts": {
     "typings-install": "typings install",
@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "equals": "^1.0.5",
-    "ng2-material-dropdown": "0.3.2"
+    "ng2-material-dropdown": "0.3.5"
   },
   "keywords": [
     "angular 2",

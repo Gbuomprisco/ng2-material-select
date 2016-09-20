@@ -8,7 +8,7 @@ var autoprefixer = require('autoprefixer');
 var webpackConfig = {
     entry: {
         'vendor': ['@angular/core', '@angular/common', '@angular/forms'],
-        'ng2-select': './src/ng2-select.ts'
+        'ng2-select': './src/ng2-select.module.ts'
     },
 
     output: {
