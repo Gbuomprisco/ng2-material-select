@@ -1,9 +1,0 @@
-{
-  "name": "ng2-material-select",
-  "version": false,
-  "dependencies": {},
-  "globalDependencies": {
-    "node": "registry:dt/node#4.0.0+20160423143914",
-    "jasmine": "registry:dt/jasmine"
-  }
-}

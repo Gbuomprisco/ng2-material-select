@@ -3,26 +3,24 @@
     "removeComments": true,
     "noImplicitAny": false,
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "declaration": true,
     "sourceMap": true,
     "moduleResolution": "node",
     "rootDir": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["node", "es6-shim", "es6-collections"]
   },
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true
   },
   "files": [
-    "typings/index.d.ts",
     "src/ng2-select.module.ts",
     "index.ts"
   ],
   "exclude": [
-    "typings/main.d.ts",
-    "typings/main",
     "node_modules"
   ],
   "compileOnSave": false,
