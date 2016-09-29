@@ -3,5 +3,11 @@ body {
 }
 
 .section {
-    margin-topL 20px;
+    margin-top: 20px;
+}
+
+.fixed-section {
+    position: fixed;
+    top: 30%;
+    right: 10%;
 }

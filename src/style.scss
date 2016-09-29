@@ -1,12 +1,14 @@
 $main-color: #2196F3;
 
+ng2-select {
+    display: block;
+}
+
 ng2-menu-item.selected .ng2-menu-item {
-    background: $main-color;
-    color: #fff;
-    border-bottom: 1px solid lighten($main-color, 15%);
+    color: $main-color;
+    background: #f9f9f9;
 }
 
 ng2-menu-item.selected:hover .ng2-menu-item {
-    background: lighten($main-color, 5%);
-    color: #fff;
+    background: #f4f4f4;
 }

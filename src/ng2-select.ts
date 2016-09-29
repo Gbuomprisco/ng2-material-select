@@ -4,8 +4,7 @@ import {
     Output,
     forwardRef,
     EventEmitter,
-    ViewChild,
-    Renderer
+    ViewChild
 } from '@angular/core';
 
 import { Selectable } from './decorators/selectable';
@@ -41,10 +40,6 @@ export class Ng2Select extends SelectAccessor {
 
     @ViewChild(Ng2Dropdown) public dropdown;
 
-    constructor(private renderer: Renderer) {
-        super();
-    }
-
     public getSelectedValue(): any {
         if (this.multiple && this.selected.length === 1) {
             return this.displayValue(this.selected[0]);
@@ -63,6 +58,14 @@ export class Ng2Select extends SelectAccessor {
             return `${this.selected.length} items selected`;
         } else {
             return this.getSelectedValue() || this.placeholder;
+        }
+    }
+
+    public isSelected(item): boolean {
+        if (this.multiple) {
+            return this.selected.indexOf(item) >= 0;
+        } else {
+           return this.value === item;
         }
     }
 
@@ -89,5 +92,7 @@ export class Ng2Select extends SelectAccessor {
 
             this.dropdown.state.select(item, false);
         });
+
+        console.log(this.selected);
     }
 }

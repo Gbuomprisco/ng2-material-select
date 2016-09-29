@@ -1,19 +1,6 @@
 <main>
 	<h1>Ng2Select demo</h1>
 
-    <div class="section">
-        <h2>Select with simple array of values</h2>
-
-        <ng2-select [placeholder]="'Choose your framework'"
-                    [options]="['EmberJS', 'React', 'Vue', 'Angular2']"
-                    [(ngModel)]="framework">
-        </ng2-select>
-
-        <p *ngIf="framework">
-            You chose {{ framework }}
-        </p>
-    </div>
-
 	<div class="section">
 		<h2>Select with predefined value</h2>
 
@@ -58,6 +45,19 @@
             <span *ngFor="let option of myModel">
                 {{ option.value }}
             </span>
+        </p>
+    </div>
+
+    <div class="fixed-section">
+        <h2>Select with simple array of values</h2>
+
+        <ng2-select [placeholder]="'Choose your framework'"
+                    [options]="frameworksList"
+                    [(ngModel)]="framework">
+        </ng2-select>
+
+        <p *ngIf="framework">
+            You chose {{ framework }}
         </p>
     </div>
 

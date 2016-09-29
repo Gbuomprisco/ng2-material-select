@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Ng2Select } from '../../src/ng2-select';
 
 @Component({
     selector: 'app',
@@ -14,6 +13,9 @@ export class Home {
     language = undefined;
     framework = undefined;
 
+    private frameworksList = [ 'EmberJS', 'React', 'Vue', 'Angular2',
+        'EmberJS', 'React', 'Vue', 'Angular2', 'EmberJS', 'React', 'EmberJS', 'React' ];
+
     frameworks = [
         {
             value: 'Angular 2',
@@ -22,6 +24,14 @@ export class Home {
         {
             value: 'React',
             id: 1
+        },
+        {
+            value: 'Ember',
+            id: 2
+        },
+        {
+            value: 'Redux',
+            id: 3
         }
     ];
     languages = [
