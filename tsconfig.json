@@ -17,8 +17,10 @@
     "forkChecker": true
   },
   "files": [
-    "src/ng2-select.module.ts",
     "index.ts"
+  ],
+  "include": [
+    "src"
   ],
   "exclude": [
     "node_modules"
