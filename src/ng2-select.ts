@@ -33,6 +33,7 @@ export class Ng2Select extends SelectAccessor {
     @Input() public placeholder: string;
     @Input() public options: any[] = [];
     @Input() public displayBy: string;
+		@Input() public selectedDisplayBy: string;
     @Input() public identifyBy: string;
     @Input() public multiple: boolean = false;
 
@@ -42,12 +43,16 @@ export class Ng2Select extends SelectAccessor {
 
     public getSelectedValue(): any {
         if (this.multiple && this.selected.length === 1) {
-            return this.displayValue(this.selected[0]);
+            return this.selectedDisplayValue(this.selected[0]);
         } else {
             const index = this.options.indexOf(this.value);
-            return index >= 0 ? this.displayValue(this.options[index]) : undefined;
+            return index >= 0 ? this.selectedDisplayValue(this.options[index]) : undefined;
         }
     }
+
+		public selectedDisplayValue(item): string {
+			return this.selectedDisplayBy ? item[this.selectedDisplayBy] : this.displayValue(item);
+		}
 
     public displayValue(item): string {
         return this.displayBy ? item[this.displayBy] : item;

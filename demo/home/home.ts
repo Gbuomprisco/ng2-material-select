@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class Home {
     framework1 = {
         value: 'Angular 2',
+				label: 'ng2',
         id: 0
     };
     language = undefined;
@@ -19,18 +20,22 @@ export class Home {
     frameworks = [
         {
             value: 'Angular 2',
+						label: 'ng2',
             id: 0
         },
         {
             value: 'React',
+						label: 'rx',
             id: 1
         },
         {
             value: 'Ember',
+						label: 'EmberJS',
             id: 2
         },
         {
             value: 'Redux',
+						label: 'Redux',
             id: 3
         }
     ];
