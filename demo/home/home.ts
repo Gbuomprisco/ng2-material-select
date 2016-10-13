@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class Home {
     framework1 = {
         value: 'Angular 2',
-				label: 'ng2',
+        label: 'ng2',
         id: 0
     };
     language = undefined;
