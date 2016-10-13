@@ -51,6 +51,9 @@ In case you want to use objects instead of simple arrays, you might want to use 
 
 - **`?identifyBy`** - optional, it is useful in case there is the possibility to have items with duplicate values (ex. two items with the same name). In that case, you can defined another key (ex. id) to correctly identify the item. Also, this allows the component to use `trackBy`
 
+In addition to that you may listen to a change event to get notified whenever a new option has been selected:
+
+- **onChange** - optional, fires whenever a new option gets selected
 
 #### Example
 
@@ -60,7 +63,8 @@ In case you want to use objects instead of simple arrays, you might want to use 
                 [displayBy]="name"
                 [identifyBy]="name"
                 [options]="options"
-                [(ngModel)]="framework">
+                [(ngModel)]="framework"
+                (onChange)="doSmth($event)">
     </ng2-select>
     
     // app.ts
@@ -85,6 +89,10 @@ In case you want to use objects instead of simple arrays, you might want to use 
                 id: 1
             }
         ];
+        
+        doSmth(selectedValue:string) {
+            // handle the selected value
+        }
     }
     
 
