@@ -50,12 +50,12 @@ export class Ng2Select extends SelectAccessor {
         }
     }
 
-		public selectedDisplayValue(item): string {
-			return this.selectedDisplayBy ? item[this.selectedDisplayBy] : this.displayValue(item);
-		}
+    public selectedDisplayValue(item): string {
+        return this.selectedDisplayBy ? item[this.selectedDisplayBy] : this.displayValue(item);
+    }
 
     public displayValue(item): string {
-      return this.displayBy ? item[this.displayBy] : item;
+        return this.displayBy ? item[this.displayBy] : item;
     }
 
     public get placeholderDisplay(): string {
