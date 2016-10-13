@@ -20,22 +20,22 @@ export class Home {
     frameworks = [
         {
             value: 'Angular 2',
-						label: 'ng2',
+            label: 'ng2',
             id: 0
         },
         {
             value: 'React',
-						label: 'rx',
+            label: 'rx',
             id: 1
         },
         {
             value: 'Ember',
-						label: 'EmberJS',
+            label: 'EmberJS',
             id: 2
         },
         {
             value: 'Redux',
-						label: 'Redux',
+            label: 'Redux',
             id: 3
         }
     ];

@@ -33,7 +33,7 @@ export class Ng2Select extends SelectAccessor {
     @Input() public placeholder: string;
     @Input() public options: any[] = [];
     @Input() public displayBy: string;
-		@Input() public selectedDisplayBy: string;
+    @Input() public selectedDisplayBy: string;
     @Input() public identifyBy: string;
     @Input() public multiple: boolean = false;
 
@@ -55,7 +55,7 @@ export class Ng2Select extends SelectAccessor {
 		}
 
     public displayValue(item): string {
-        return this.displayBy ? item[this.displayBy] : item;
+      return this.displayBy ? item[this.displayBy] : item;
     }
 
     public get placeholderDisplay(): string {
