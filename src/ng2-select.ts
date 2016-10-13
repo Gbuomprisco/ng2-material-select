@@ -92,7 +92,5 @@ export class Ng2Select extends SelectAccessor {
 
             this.dropdown.state.select(item, false);
         });
-
-        console.log(this.selected);
     }
 }
