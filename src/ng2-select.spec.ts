@@ -143,12 +143,10 @@ describe('Ng2Select', () => {
             // select first
             component.dropdown.state.onItemClicked.emit(item);
             expect(component.value).toEqual([item.value]);
-            expect(component.value).toEqual(component.selected);
             expect(component.placeholderDisplay).toEqual(item.value.value);
 
             // select second
             component.dropdown.state.onItemClicked.emit(secondItem);
-            expect(component.value).toEqual(component.selected);
             expect(component.value).toEqual([item.value, secondItem.value]);
             expect(component.placeholderDisplay).toEqual('2 items selected');
         }));

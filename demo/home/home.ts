@@ -39,9 +39,15 @@ export class Home {
             id: 3
         }
     ];
+
     languages = [
-        {value: 'Typescript'},
-        {value: 'Javascript'}
+        {value: 'Typescript', id: 0},
+        {value: 'Javascript', id: 1}
+    ];
+
+    multipleValuesModel = [
+        {value: 'Typescript', id: 0},
+        {value: 'Javascript', id: 1}
     ];
 
     myModel = [];

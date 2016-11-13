@@ -38,12 +38,12 @@
                     [displayBy]="'value'"
                     [identifyBy]="'id'"
                     [options]="languages"
-                    [(ngModel)]="myModel">
+                    [(ngModel)]="multipleValuesModel">
         </ng2-select>
 
-        <p *ngIf="myModel.length">
-            You chose
-            <span *ngFor="let option of myModel">
+        <p *ngIf="multipleValuesModel.length">
+            <span>You chose</span>
+            <span *ngFor="let option of multipleValuesModel">
                 {{ option.value }}
             </span>
         </p>
