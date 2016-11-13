@@ -8,20 +8,18 @@ export class SelectAccessor implements ControlValueAccessor {
     public options: any[];
     public identifyBy: string;
     public multiple: boolean;
-    public selected: any[] = [];
     public toggle;
-
-    private _value: any = undefined;
+    private _value: any = [];
     private _onTouchedCallback: (value: any) => void;
     private _onChangeCallback: (value: any) => void;
 
     public get value(): any {
-        return this.multiple ? this.selected : this.options[this._value];
+        return this._value;
     };
 
     public set value(value: any) {
         this._value = value;
-        this._onChangeCallback(this.value);
+        this._onChangeCallback(this._value);
     }
 
     public onTouched(value) {
@@ -29,7 +27,7 @@ export class SelectAccessor implements ControlValueAccessor {
     }
 
     public writeValue(value: any) {
-        this._value = this.multiple ? this.selected : this.findIndexValue(value);
+        this._value = value || [];
     }
 
     public findIndexValue(value): number {

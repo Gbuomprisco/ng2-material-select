@@ -1,3 +1,5 @@
+const equal = require('equals');
+
 export function Selectable() {
     return function(target) {
         const toggle = function(item): void {
@@ -6,9 +8,9 @@ export function Selectable() {
             }
 
             if (this.isSelected(item)) {
-                this.selected = this.selected.filter(value => value !== item);
+                this.value = this.value.filter(value => !this.isEqual(item, value));
             } else {
-                this.selected.push(item);
+                this.value = [...this.value, item];
             }
         };
 

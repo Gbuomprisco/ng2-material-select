@@ -1,6 +1,6 @@
 {
   "name": "ng2-material-select",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "Angular 2 material-like Select Component",
   "scripts": {
     "prepublish": "npm run build && ./node_modules/.bin/tsc -p tsconfig.json",
@@ -65,7 +65,7 @@
   },
   "dependencies": {
     "equals": "^1.0.5",
-    "ng2-material-dropdown": "0.3.6"
+    "ng2-material-dropdown": "0.4.0"
   },
   "keywords": [
     "angular 2",
@@ -75,7 +75,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Gbuomprisco/ng2-select-material"
+    "url": "https://github.com/Gbuomprisco/ng2-material-select"
   },
   "bugs": {
     "url": "https://github.com/Gbuomprisco/ng2-material-select/issues"
