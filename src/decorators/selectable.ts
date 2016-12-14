@@ -1,8 +1,7 @@
-const equal = require('equals');
 
 export function Selectable() {
     return function(target) {
-        const toggle = function(item): void {
+        const toggle = function(this: any, item): void {
             if (this.multiple === false) {
                 return;
             }
