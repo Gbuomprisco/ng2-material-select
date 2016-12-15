@@ -84,6 +84,7 @@
   "main": "./dist/ng2-select.bundle.js",
   "files": [
     "dist",
-    "index.ts"
+    "index.ts",
+    "src"
   ]
 }
