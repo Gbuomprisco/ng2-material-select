@@ -11,7 +11,7 @@ import { Selectable } from './decorators/selectable';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Ng2Dropdown } from 'ng2-material-dropdown';
 import { SelectAccessor } from './accessor';
-const equal = require('equals');
+import * as equal from 'equals';
 
 const CUSTOM_SELECT_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
@@ -26,8 +26,8 @@ const CUSTOM_SELECT_VALUE_ACCESSOR = {
 @Component({
     selector: 'ng2-select',
     providers: [ CUSTOM_SELECT_VALUE_ACCESSOR ],
-    styles: [ require('./style.scss').toString() ],
-    template: require('./template.html')
+    styleUrls: [ './style.scss' ],
+    templateUrl: './template.html'
 })
 @Selectable()
 export class Ng2Select extends SelectAccessor {
@@ -99,7 +99,8 @@ export class Ng2Select extends SelectAccessor {
             }
 
             // focus selected element
-            const index = this.findIndexValue(this.value);
+            const index: number|void = this.findIndexValue(this.value);
+            if (!index) return;
             const item = this.dropdown.menu.items.toArray()[index];
 
             this.dropdown.state.select(item, false);

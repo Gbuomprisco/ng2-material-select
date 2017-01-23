@@ -2,7 +2,7 @@ import {
     ControlValueAccessor
 } from '@angular/forms';
 
-const equal = require('equals');
+import * as equal from 'equals';
 
 export class SelectAccessor implements ControlValueAccessor {
     public options: any[];
@@ -30,7 +30,7 @@ export class SelectAccessor implements ControlValueAccessor {
         this._value = value || [];
     }
 
-    public findIndexValue(value): number {
+    public findIndexValue(value): number|void {
         const identifyBy = this.identifyBy;
 
         if (identifyBy) {
