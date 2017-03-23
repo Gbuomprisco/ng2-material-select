@@ -1,8 +1,6 @@
-# Angular2 Material Select
+# Angular Material Select Component
 
 A component inspired by material design for creating visually nice select components.
-
-**This is still WIP**
 
 ## Demo
 Checkout a live demo at [http://www.webpackbin.com/4kAEf9Sub](http://www.webpackbin.com/4kAEf9Sub)
@@ -81,8 +79,7 @@ export class App {
         }
     ];
 }
- ```   
+ ```
 
 ## TODO
 - Autocomplete dropdown
-- Nicer design

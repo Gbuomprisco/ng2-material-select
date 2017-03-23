@@ -1,33 +1,28 @@
-
 module.exports = {
     devtool: 'cheap-module-source-map',
 
     resolve: {
-        extensions: ['', '.ts', '.js']
+        extensions: ['.ts', '.js']
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loader: 'awesome-typescript-loader'
+                loaders: ['angular2-template-loader', 'awesome-typescript-loader']
             },
             {
                 test: /\.png/,
                 loader: "url-loader",
-                query: { mimetype: "image/png" }
-            },
-            {
-                test: /\.css$/,
-                loader: 'css'
+                query: {mimetype: "image/png"}
             },
             {
                 test: /\.html$/,
-                loader: "html"
+                loader: "html-loader"
             },
             {
-                test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
+                test: /\.(css|scss)$/,
+                loaders: ['to-string-loader', 'css-loader', 'sass-loader']
             }
         ]
     }

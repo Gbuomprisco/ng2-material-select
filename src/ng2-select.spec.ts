@@ -61,13 +61,6 @@ describe('Ng2Select', () => {
             expect(component.options.length).toEqual(2);
             expect(component.dropdown.menu.items.length).toEqual(2);
         }));
-
-        it('selects first item', fakeAsync(() => {
-            component = getComponent(fixture);
-            const item = component.dropdown.menu.items.first;
-            component.dropdown.state.onItemClicked.emit(item);
-            expect(component.getSelectedValue()).toEqual('Typescript');
-        }));
     });
 
     describe('testing selected with objects', () => {
@@ -139,14 +132,15 @@ describe('Ng2Select', () => {
             const items = component.dropdown.menu.items.toArray();
             const item = items[0];
             const secondItem = items[1];
+            const state = component.dropdown.menu.state.dropdownState;
 
             // select first
-            component.dropdown.state.onItemClicked.emit(item);
+            state.onItemClicked.emit(item);
             expect(component.value).toEqual([item.value]);
             expect(component.placeholderDisplay).toEqual(item.value.value);
 
             // select second
-            component.dropdown.state.onItemClicked.emit(secondItem);
+            state.onItemClicked.emit(secondItem);
             expect(component.value).toEqual([item.value, secondItem.value]);
             expect(component.placeholderDisplay).toEqual('2 items selected');
         }));
@@ -157,22 +151,23 @@ describe('Ng2Select', () => {
             const items = component.dropdown.menu.items.toArray();
             const item = items[0];
             const secondItem = items[1];
+            const state = component.dropdown.menu.state.dropdownState;
 
             // select first
-            component.dropdown.state.onItemClicked.emit(item);
+            state.onItemClicked.emit(item);
 
             // deselect first
-            component.dropdown.state.onItemClicked.emit(item);
+            state.onItemClicked.emit(item);
             expect(component.value).toEqual([]);
 
             // select both
-            component.dropdown.state.onItemClicked.emit(secondItem);
-            component.dropdown.state.onItemClicked.emit(item);
+            state.onItemClicked.emit(secondItem);
+            state.onItemClicked.emit(item);
             expect(component.value).toEqual([secondItem.value, item.value]);
 
             // deselect both
-            component.dropdown.state.onItemClicked.emit(secondItem);
-            component.dropdown.state.onItemClicked.emit(item);
+            state.onItemClicked.emit(secondItem);
+            state.onItemClicked.emit(item);
             expect(component.value).toEqual([]);
         }));
     });

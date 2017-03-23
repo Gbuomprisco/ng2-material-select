@@ -1,14 +1,15 @@
 $main-color: #2196F3;
 
-ng2-select {
+ng2-select,
+ng2-menu-item {
     display: block;
 }
 
-ng2-menu-item.selected .ng2-menu-item {
+/deep/ ng2-menu-item.selected .ng2-menu-item {
     color: $main-color;
     background: #f9f9f9;
 }
 
-ng2-menu-item.selected:hover .ng2-menu-item {
+ng2-menu-item.selected:hover {
     background: #f4f4f4;
 }

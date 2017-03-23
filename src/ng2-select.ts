@@ -19,29 +19,29 @@ const CUSTOM_SELECT_VALUE_ACCESSOR = {
     multi: true
 };
 
-/**
- * A component for entering a list of terms to be used with ngModel.
- */
-
 @Component({
     selector: 'ng2-select',
     providers: [ CUSTOM_SELECT_VALUE_ACCESSOR ],
-    styles: [ require('./style.scss').toString() ],
-    template: require('./template.html')
+    styleUrls: [ './style.scss' ],
+    templateUrl: './template.html'
 })
 @Selectable()
 export class Ng2Select extends SelectAccessor {
-    @Input() public placeholder: string;
-    @Input() public options: any[] = [];
-    @Input() public displayBy: string;
-    @Input() public selectedDisplayBy: string;
-    @Input() public identifyBy: string;
-    @Input() public multiple: boolean = false;
+    @Input() public placeholder = '';
+    @Input() public options = [];
+    @Input() public displayBy = '';
+    @Input() public identifyBy = '';
+    @Input() public selectedDisplayBy = '';
+    @Input() public multiple = false;
 
     @Output() public onChange: EventEmitter<string> = new EventEmitter<string>();
 
-    @ViewChild(Ng2Dropdown) public dropdown;
+    @ViewChild(Ng2Dropdown) public dropdown: Ng2Dropdown;
 
+    /**
+     * @name getSelectedValue
+     * @return {string}
+     */
     public getSelectedValue(): any {
         if (this.multiple && this.value.length === 1) {
             return this.selectedDisplayValue(this.value[0]);
@@ -51,14 +51,28 @@ export class Ng2Select extends SelectAccessor {
         }
     }
 
+    /**
+     * @name selectedDisplayValue
+     * @param item
+     * @return {string}
+     */
     public selectedDisplayValue(item): string {
         return this.selectedDisplayBy ? item[this.selectedDisplayBy] : this.displayValue(item);
     }
 
+    /**
+     * @name displayValue
+     * @param item
+     * @return {any}
+     */
     public displayValue(item): string {
         return this.displayBy ? item[this.displayBy] : item;
     }
 
+    /**
+     * @name placeholderDisplay
+     * @return {any}
+     */
     public get placeholderDisplay(): string {
         if (this.multiple && this.value.length > 1) {
             return `${this.value.length} items selected`;
@@ -67,11 +81,22 @@ export class Ng2Select extends SelectAccessor {
         }
     }
 
+    /**
+     * @name isEqual
+     * @param itemOne
+     * @param itemTwo
+     * @return {boolean}
+     */
     public isEqual(itemOne, itemTwo) {
         return this.identifyBy ? itemOne[this.identifyBy] === itemTwo[this.identifyBy] :
             equal(itemOne, itemTwo);
     }
 
+    /**
+     * @name isSelected
+     * @param item
+     * @return {any}
+     */
     public isSelected(item): boolean {
         if (this.multiple) {
             return this.value.filter(value => this.isEqual(item, value)).length > 0;
@@ -81,7 +106,7 @@ export class Ng2Select extends SelectAccessor {
     }
 
     ngOnInit() {
-        const state = this.dropdown.state;
+        const state = this.dropdown.menu.state.dropdownState;
 
         state.onItemClicked.subscribe(item => {
             if (this.multiple) {
@@ -102,7 +127,7 @@ export class Ng2Select extends SelectAccessor {
             const index = this.findIndexValue(this.value);
             const item = this.dropdown.menu.items.toArray()[index];
 
-            this.dropdown.state.select(item, false);
+            state.select(item, false);
         });
     }
 }
