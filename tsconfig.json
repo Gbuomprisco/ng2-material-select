@@ -14,6 +14,7 @@
         "moduleResolution": "node",
         "rootDir": ".",
         "outDir": "dist",
+	"typeRoots": ["node_modules/@types"],
         "types": [
             "node",
             "jasmine"
@@ -24,8 +25,7 @@
         ]
     },
     "awesomeTypescriptLoaderOptions": {
-        "forkChecker": true,
-        "useWebpackText": true
+        "forkChecker": true
     },
     "angularCompilerOptions": {
         "strictMetadataEmit": true
@@ -34,7 +34,7 @@
         "./src/ng2-select.module.ts"
     ],
     "include": [
-        "src"
+        "src/**/*"
     ],
     "exclude": [
         "node_modules",
