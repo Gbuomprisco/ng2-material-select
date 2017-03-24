@@ -3,7 +3,7 @@
 A component inspired by material design for creating visually nice select components.
 
 ## Demo
-Checkout a live demo at [http://www.webpackbin.com/4kAEf9Sub](http://www.webpackbin.com/4kAEf9Sub)
+Checkout a live demo at [http://www.buompris.co/ng2-material-select](http://www.buompris.co/ng2-material-select)
 
 ## Install
 
